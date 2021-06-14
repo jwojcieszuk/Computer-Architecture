@@ -1,0 +1,45 @@
+basic check:
+./rpn '5 1 2 + 4 '*' + 3 -' = 14
+./rpn '12 2 3 4 '*' 10 5 / + '*' +' = 40
+
+wrong input check:
+2147483650 2 +
+2 2147483650 +
+2147483646 1 +
+
+-2147483648 -1 +
+
+
+underflow in addition:
+./rpn '-2147483648 -1 +'
+    - Result: -2147483648
+
+overflow in addition:
+./rpn '2147483647 1 +'
+    - Result: 2147483647
+
+overflow in subtraction:
+./rpn '2147483647 -1 -'
+
+underflow in subtraction:
+./rpn '-2147483648 1 -'
+
+underflow in multiplication:
+./rpn '2147483647 -2 *'
+
+./rpn '-2147483648 2 *'
+
+
+overflow in multiplication:
+./rpn '-2147483648 -1 *'
+
+./rpn '2147483647 2 *'
+
+underflow in divsion:
+./rpn '-2147483648 -1 /'
+
+
+input overflow:
+./rpn '2147483650 -1 +'
+
+
